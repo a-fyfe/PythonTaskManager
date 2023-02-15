@@ -1,0 +1,10 @@
+______________________________________________________________
+
+Total number of tasks in Task Manager:	5
+Completed tasks:						1
+Incomplete tasks:						4
+Overdue tasks:							2
+Percentage of incomplete tasks:			80.0%
+Percentage of incomplete tasks:			40.0%
+
+______________________________________________________________

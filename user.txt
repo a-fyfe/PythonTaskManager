@@ -1,0 +1,5 @@
+admin, adm1n
+john, johnny
+tom, tommy
+allan, allys
+bingus, bingo1

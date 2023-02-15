@@ -1,0 +1,41 @@
+______________________________________________________________
+
+Total number of users in Task Manager:			5
+Total number of tasks in Task Manager:			5
+
+______________________________________________________________
+
+User stats:
+
+User:	admin
+Total assigned tasks:					2
+Percentage of total tasks assigned:		40.0%
+Percentage of tasks complete:			0.0%
+Percentage of incomplete tasks overdue:	100.0%
+
+
+
+User:	john
+Total assigned tasks:					1
+Percentage of total tasks assigned:		20.0%
+Percentage of tasks complete:			100.0%
+Percentage of incomplete tasks overdue:	0.0%
+
+
+
+User:	tom
+Total assigned tasks:					2
+Percentage of total tasks assigned:		40.0%
+Percentage of tasks complete:			0.0%
+Percentage of incomplete tasks overdue:	0.0%
+
+
+
+User:	allan
+Total assigned tasks:					0
+
+
+User:	bingus
+Total assigned tasks:					0
+
+
