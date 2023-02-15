@@ -1,12 +1,12 @@
 # PythonTaskManager
 
-__Overview:
+**Overview:
 
-__A simple Python Task Manager with an in-built login function.
+A simple Python Task Manager with an in-built login function.
 
-__The user can login, create new users and manage existing users.
+The user can login, create new users and manage existing users.
 
-__The user can also create, modify and display tasks - i.e. use the program as a convenient Task Manager productivity tool
+The user can also create, modify and display tasks - i.e. use the program as a convenient Task Manager productivity tool.**
 
 This program was created as an exercise in working with files, lists, functions and string handling in Python.
 
