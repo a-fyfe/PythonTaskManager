@@ -23,6 +23,7 @@ users = len(contents)
 
 # Requesting username input for first time
 
+print("______________________________________________________________\n\nTask Manager login:\n______________________________________________________________\n")
 username = input("Please enter your username: \n").lower()
 
 while True:
@@ -370,11 +371,10 @@ def menu():
 
 # Displaying menu options in clear and concise manner
 
-    print("______________________________________________________________\n")
-    print("Welcome to the Task Manager!\n\nPlease choose an option from the following list:\n")
-    print("r\t-\tRegistering a user \na\t-\tAdding a task \nva\t-\tView all tasks \nvm\t-\tView my task\ngr\t-\tGenerate report\ne\t-\tExit")
+    print("______________________________________________________________\n\nWelcome to the Task Manager!\n______________________________________________________________\n\nPlease choose an option from the list below:\n")
+    print("r\t-\tRegister a new user \na\t-\tAdd a task \nva\t-\tView all tasks \nvm\t-\tView my task\ngr\t-\tGenerate a report\ne\t-\tExit")
     if username == "admin": # 'Secret' statistics dashboard option only appears on list when user logged in as 'admin'
-        print("s\t-\tAdmin Stats Dashboard")
+        print("s\t-\tAdmin stats dashboard")
     print("\n______________________________________________________________\n")
     menu_input = input("Please enter your choice: \n").lower()
 
@@ -397,7 +397,7 @@ def menu():
         report()
 
     elif menu_input == 'e':
-        print("______________________________________________________________\n" + "Thank you for using Task Manager. Goodbye!" + "\n______________________________________________________________\n")
+        print("______________________________________________________________\n" + "Thank you for using Task Manager. \nGoodbye!" + "\n______________________________________________________________\n")
         exit()
 
     else:
