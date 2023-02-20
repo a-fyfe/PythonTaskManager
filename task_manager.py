@@ -21,6 +21,8 @@ contents = contents.split()
 contents = [i.strip(',') for i in contents]
 users = len(contents)
 
+# Requesting username input for first time
+
 username = input("Please enter your username: \n").lower()
 
 while True:
@@ -32,6 +34,8 @@ while True:
         print("Username invalid.")
         username = input("Please re-enter your username: \n")
 
+# Requesting password input for first time with while loop to check for match against user.txt      
+               
 password = input("Please enter your password: \n")
 
 while True:
@@ -52,7 +56,7 @@ menu_input = ""
 new_username = ""
 new_password = ""
 passconf = ""
-today_task = today.strftime("%d %b %Y")
+today_task = today.strftime("%d %b %Y") # Using datetime library to efficently add today's date
 file_task = ""
 username_task = ""
 title_task = ""
@@ -73,6 +77,8 @@ def reg_user():
         contents = contents.split()
         contents = [s.strip(",") for s in contents]
         
+        # Requesting new username input and checking to see whether it already exists in user.txt
+        
         new_username = input("Please enter your new username here: \n").lower()
         print (contents)
 
@@ -84,6 +90,8 @@ def reg_user():
                 break
         file_user.close()
 
+        # Requesting new password input and checking whether it matches password confirmation request
+        
         new_password = input("Please enter your new password: \n")
         passconf = input("Please confirm your password: \n")
         while True:
@@ -103,11 +111,17 @@ def reg_user():
 # Defining 'add_task()' function to add new tasks to tasks.txt
 
 def add_task():
+    
+        # Requesting task details
+    
         username_task = input("Please enter the username to whom you are assigning the task: \n")
         title_task = input("Please enter the title of the new task: \n")
         description_task = input("Please enter a description for your new task: \n")
         due_task = input("Please enter a due date for your new task (format example: 20 Oct 2022): \n")
         complete_task = input("If your task complete (Yes or No)?: \n")
+        
+        # Writing full task details to tasks.txt
+        
         file_task = open('tasks.txt', 'a')
         file_task.write("\n" + username_task + ", " + title_task + ", " + description_task + ", " + due_task + ", " + str(today_task) + ", " + complete_task)
         print("Your new task has been successfully created. Returning to main menu...\n")
@@ -121,6 +135,9 @@ def view_all():
         for line in file_task:
             line.split("\n")
             task = line.split(",")
+            
+            # Displaying tasks from file_task.txt in readable format
+            
             print("______________________________________________________________\n" + "\nTask:\t\t\t\t" + task[1]+ "\nAssigned to:\t\t\t" + task[0] + "\nDate assigned:\t\t\t" + task[4] + "\nDue date:\t\t\t" + task[3] + "\nTask complete?:\t\t\t" + task[5] + "\nTask Description:\n" + task[2] + "\n______________________________________________________________\n")
             file_task.close()
     print("All tasks displayed. Returning to main menu...\n")
@@ -144,6 +161,7 @@ def view_mine():
 
 
     # Requesting task number input from user to provide task editing options
+    
     task_num2 = int(input("Enter the task number you wish to edit (enter '-1' to return to main menu):\n"))
     if task_num == -1:
         print("Returning to main menu...\n")
@@ -157,6 +175,7 @@ def view_mine():
         edit_type = int(input("Type '1' to mark this task as complete.\n\nType '2' to edit task details.\n\nEnter your choice:\n"))
         
         # If option '1' chosen, then user can mark task as complete (achieved by splitting tasks.txt contents multiple times to locate and update completion status)
+        
         if edit_type == 1:
             contents[task_num2 -1] = contents[task_num2 -1].split(', ')
             if contents[task_num2 -1][5] == 'Yes': # Printing error message if task is already marked as being complete
@@ -171,6 +190,7 @@ def view_mine():
             print("Your task status has been updated.\n")
 
         # If option '2' chosen, then user can update either the assigned user or due date (achieved by splitting tasks.txt contents multiple times to locate and update relevant data)
+        
         elif edit_type == 2:
             edit_type = int(input("Type '1' to update the assigned user of this task.\n\nType '2' to edit the due date.\n\nEnter your choice:\n"))
             if edit_type == 1:
@@ -209,7 +229,7 @@ def view_mine():
     menu()    
 
 # Defining 'report()' function to generate and display different usage reports
-# Note: 'report_gen()' has been made separately to 'report()' so that it can be used in the background of the admin 'stats()'
+# Note: 'report_gen()' has been defined separately to 'report()' so that it can be used in the background of the admin 'stats()'
 
 def report_gen():
     incomplete_task = 0
@@ -219,6 +239,7 @@ def report_gen():
     past_date = 0
 
     # Generating task_overview.txt report
+    
     with open('tasks.txt', 'r') as file_task:
         task = file_task.read()
         task = task.split('\n')
@@ -242,6 +263,7 @@ def report_gen():
     file_task.close()
 
     # Generating user_overview.txt report
+    
     with open('user.txt', 'r') as file_user:
         user_line = file_user.read()
         user_line = user_line.split('\n')
@@ -250,11 +272,13 @@ def report_gen():
         file_user.close()
 
     # Creating dictionary to allow for tracking of tasks assigned to various users
+    
     user_dict = {}
     for i in range(0, len(user_line)):
         user_dict[user_line[i].split(', ')[0]] = 0
 
     # Creating additional dictionaries (using original user_dict) to allow tracking of complete/incomplete/overdue tasks
+    
     comp_dict = dict.fromkeys(user_dict)
     for i in comp_dict:
         comp_dict[i] = 0
@@ -268,6 +292,7 @@ def report_gen():
         overdue_dict[i] = 0
 
     # Printing first part of user_overview.txt (total users and total tasks)
+    
     file_user = open('user_overview.txt', 'w')
     file_user.write("______________________________________________________________\n" + "\nTotal number of users in Task Manager:\t\t\t" + str(user) + "\nTotal number of tasks in Task Manager:\t\t\t" + str(task_total) + "\n\n______________________________________________________________\n\n" + "User stats:\n\n")
     file_user.close()
@@ -279,6 +304,7 @@ def report_gen():
     task = [i.strip(',') for i in task]
 
     # 'for' statement to count number of tasks assigned to individual users and add info to dictionary
+    
     for i in range (0, task_total): 
         if task[i].split(', ')[0] in user_dict.keys():
             user_dict[task[i].split(', ')[0]] += 1
@@ -292,6 +318,7 @@ def report_gen():
                     overdue_dict[task[i].split(', ')[0]] += 1
 
     # Looping through user_line variable to compile all data stored in dictionaries to allow for writing to user_overview.txt
+    
     for i in range(0, user):
         p_assigned = ((user_dict[user_line[i].split(', ')[0]]) / task_total) * 100
         if user_dict[user_line[i].split(', ')[0]] != 0:
